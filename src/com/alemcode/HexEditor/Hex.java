@@ -70,9 +70,10 @@ public class Hex
 	public static byte[] hexToBytes( char[] hex_chars )
 	{
 		int hex_length = hex_chars.length;
-		byte[] byte_form = new byte[hex_length/2];
+		int byte_length = hex_length/2;
+		byte[] byte_form = new byte[byte_length];
 
-		for( int i = 0, j = 0; i<hex_length/2; i++, j=i*2 )
+		for( int i = 0, j = 0; i<byte_length; i++, j=i*2 )
 		{
 			byte_form[i] = (byte)( 
 					indexOfChar( hex_chars[j], hex_digits )*16
