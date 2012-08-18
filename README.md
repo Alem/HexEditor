@@ -1,4 +1,4 @@
-HexEditor - A crude HexEditor object for Java
+HexEditor - A Simple HexEditor Class for Java
 ===============================================
 (c) Alem - Alemcode.com
 
@@ -6,41 +6,35 @@ HexEditor - A crude HexEditor object for Java
 DESCRIPTION
 ---------------
 HexEditor is a crude, dead-simple HexEditing utility class for Java.  
-Open a binary file and replace hexadecimal strings or characters.   
-That's it.
+Open a binary file and replace hexadecimal strings or characters.
 
-*Caveat:* This class should not be used for large binary files as it  
-simply loads binary content into memory.
+*Caveat:* This class should not be used for large binary files as it simply 
+loads binary content into memory.
 
 USAGE
 ---------------
 
-
-Opening file
+To open a binary file:
 
     HexEditor HexEditor = new HexEditor( "/path/to/binary" );
 
-For a simple string replace
+For simple string replacements:
 
     HexEditor.replace( "4a", "5b");
 
-For regex replacements
+For regex replacements:
 
     HexEditor.regexReplace( "5b", "6c");
 
-For positional replacements
+For positional replacements:
 
     HexEditor.replacePosition( 2, 'f');
 
-
-*Note:* All alphabetical characters in the hexadecimal character set 
-must be in their lowercase form. ( Crude, remember? )
-
-Saving
+Saving:
 
     HexEditor.save();
     HexEditor.saveAs( "/path/to/newbinary" );
 
-Deletion
+Deletion:
 
     HexEditor.delete();

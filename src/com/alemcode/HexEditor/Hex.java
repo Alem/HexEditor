@@ -45,20 +45,6 @@ public class Hex
 
 
 	/**
-	 * Returns index of a char in a char array
-	 *
-	 * Constructs String out of char array to make use of String's indexOf method
-	 *
-	 * @param char 	needle 		The char to find
-	 * @param char[] haystack 	The char array to search through
-	 * @return The index of the needle
-	 */
-	public static int indexOfChar( char needle, char[] haystack )
-	{
-		return( new String( haystack ).indexOf( needle ) );
-	}
-
-	/**
 	 * Turns a char array containing hex data into a byte array
 	 *
 	 * Calculates hexadecimal pair's integer value (base 10),
@@ -75,13 +61,24 @@ public class Hex
 
 		for( int i = 0, j = 0; i<byte_length; i++, j=i*2 )
 		{
-			byte_form[i] = (byte)( 
-					indexOfChar( hex_chars[j], hex_digits )*16
-					+ indexOfChar(hex_chars[j+1], hex_digits )
-					);
+			int most_sig  =	hexToDec( hex_chars[j], 1 );
+			int least_sig = hexToDec( hex_chars[j+1], 0 );
+			byte_form[i] = (byte)( most_sig + least_sig );
 		}
 		return byte_form;
 
+	}
+
+	/**
+	 * Converts hex character to decimal (integer) value
+	 *
+	 * @param hex_char 	The hex character to convert
+	 * @param position 	Character position or distance from radix point.
+	 * 			(e.g. for C3, C is at 1 and 3 is at 0 )
+	 */
+	public static int hexToDec( char hex_char, int position )
+	{
+		return Character.digit( hex_char, 16 ) << position*4; 
 	}
 
 }

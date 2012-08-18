@@ -84,7 +84,7 @@ public class HexTest extends TestCase
 					"Saved as binary_test2 with content:" 
 					+ binary_file2.file_hex_string 
 					);
-			assertEquals( binary_file2.file_hex_string, "74a44a" );
+			assertEquals( binary_file2.file_hex_string, "7ca4ca" );
 
 			// Verify actual content of binary remained unchanged
 			HexEditor binary_file_old = new HexEditor( "binary_test" );
@@ -98,10 +98,10 @@ public class HexTest extends TestCase
 			binary_file.save();
 			HexEditor binary_file_new = new HexEditor( "binary_test" );
 			System.out.println( 
-					"Re-opned binary_test after save() and found:"
+					"Re-opened binary_test after save() and found:"
 				       	+ binary_file_new.file_hex_string 
 					);
-			assertEquals( binary_file_new.file_hex_string, "74a44a" );
+			assertEquals( binary_file_new.file_hex_string, "7ca4ca" );
 
 			// cleanup
 			binary_file.delete();
@@ -125,16 +125,16 @@ public class HexTest extends TestCase
 	 */
 	public static void replacementTest( HexEditor binary_file )
 	{
-		binary_file.replace( "01", "66" );
-		assertEquals( binary_file.file_hex_string, "66a66a" );
-		System.out.println( "Replace 01 for 66: " + binary_file.file_hex_string );
+		binary_file.replace( "01", "6B" );
+		assertEquals( binary_file.file_hex_string, "6Ba6Ba" );
+		System.out.println( "Replace 01 for 6B: " + binary_file.file_hex_string );
 
-		binary_file.regexReplace( "66", "44" );
-		assertEquals( binary_file.file_hex_string, "44a44a" );
-		System.out.println( "Replace 66 for 44: " + binary_file.file_hex_string );
+		binary_file.regexReplace( "6B", "4c" );
+		assertEquals( binary_file.file_hex_string, "4ca4ca" );
+		System.out.println( "Replace 6B for 4c: " + binary_file.file_hex_string );
 
 		binary_file.replacePosition( 0, '7' );
-		assertEquals( binary_file.file_hex_string, "74a44a" );
+		assertEquals( binary_file.file_hex_string, "7ca4ca" );
 		System.out.println( "Replace pos 0 with 7: " + binary_file.file_hex_string );
 	}
 
